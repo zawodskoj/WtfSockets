@@ -25,7 +25,7 @@ namespace WtfSockets
 
         private async Task Run(bool sync)
         {
-            var (host, port) = ("dev-01.perfema.com", 11883);
+            var (host, port) = ("192.168.108.101", 11883);
             
             Notify("");
             
@@ -38,7 +38,7 @@ namespace WtfSockets
                 var connT = sync
                     ? Task.Run(() => sock.Connect(host, port))
                     : sock.ConnectAsync(host, port);
-                var rT = await Task.WhenAny(connT, Task.Delay(3000));
+                var rT = await Task.WhenAny(connT, Task.Delay(5000));
                 
                 await rT; // for exception
 
